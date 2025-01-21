@@ -13,18 +13,10 @@ module.exports = () => {
     {
       email: 'jim@email.com',
       name: 'Jim Halpert',
-      role: 'client',
-      password: hashSync('supersecretpassword'),
-      active: false,
-      confirmed: true,
-    },
-    {
-      email: 'pam@email.com',
-      name: 'Pam Beesly',
-      role: 'client',
+      role: 'manager',
       password: hashSync('supersecretpassword'),
       active: true,
-      confirmed: false,
+      confirmed: true,
     },
   ];
 };

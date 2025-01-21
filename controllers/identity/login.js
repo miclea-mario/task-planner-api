@@ -45,13 +45,13 @@ module.exports = async (req, res) => {
 
   // set refresk token as cookie
   const oneDay = 24 * 3600 * 1000;
-  res.cookie('jwt_refresh_token', refreshToken, {
+  res.cookie(process.env.JWT_TOKEN_NAME, refreshToken, {
     domain: process.env.COOKIE_DOMAIN,
-    secure: true,
-    maxAge: oneDay,
-    signed: true,
     httpOnly: true,
-    sameSite: 'lax',
+    maxAge: oneDay,
+    secure: true,
+    signed: true,
+    sameSite: 'Lax',
   });
 
   return res.status(200).json({ token, message: 'Authentication successful' });
