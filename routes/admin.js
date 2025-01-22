@@ -10,4 +10,4 @@ router.all('/admin', authenticate, authorize('admin'));
 router.all('/admin/*', authenticate, authorize('admin'));
 
 router.get('/admin/users', Admin.listUsers);
-router.post('/admin/users/add', Admin.addUser);
+router.post('/admin/users', Admin.addUser);

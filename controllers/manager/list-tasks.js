@@ -1,4 +1,3 @@
-const { error } = require('../../functions');
 const { knex } = require('../../db');
 
 module.exports = async (req, res) => {
@@ -41,9 +40,13 @@ module.exports = async (req, res) => {
 
   const tasks = await query;
 
-  if (!tasks) {
-    throw error(404, 'No tasks found matching the criteria');
-  }
+  // Query for the manager's executants
+  const executants = await knex('identities')
+    .select('id', 'name', 'email', 'role')
+    .where({ manager_id: me, role: 'executant' });
 
-  return res.status(200).json(tasks);
+  return res.status(200).json({
+    tasks,
+    executants,
+  });
 };
