@@ -21,6 +21,8 @@ module.exports = async (req, res) => {
       email,
       password: hashSync(password),
       role,
+      active: true,
+      confirmed: true,
       manager_id: role === 'executant' ? manager_id : null,
     })
     .returning(['id', 'name', 'email', 'role', 'manager_id']);
